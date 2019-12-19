@@ -71,6 +71,15 @@ export class TenantService {
      */
     public async getProxyHostnames(): Promise<string[]> {
         const setting = await this.settingsProvider.getSetting<string>("proxyHostnames");
+
+        if (!setting) {
+            return ["localhost"];
+        }
+
+        if (Array.isArray(setting)) {
+            return setting;
+        }
+
         const hostnames = setting ? setting.split(";") : [];
         return hostnames;
     }

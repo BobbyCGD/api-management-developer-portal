@@ -6,7 +6,7 @@ import { Component, RuntimeComponent, OnMounted, OnDestroyed, Param } from "@pap
 import { Api } from "../../../../../models/api";
 import { Operation } from "../../../../../models/operation";
 import { ApiService } from "../../../../../services/apiService";
-import { TypeDefinition, TypeDefinitionObjectProperty, TypeDefinitionProperty } from "../../../../../models/typeDefinition";
+import { TypeDefinition, TypeDefinitionProperty } from "../../../../../models/typeDefinition";
 import { RouteHelper } from "../../../../../routing/routeHelper";
 import { TenantService } from "../../../../../services/tenantService";
 import { SwaggerObject } from "./../../../../../contracts/swaggerObject";
@@ -118,6 +118,10 @@ export class OperationDetails {
         const operation = await this.apiService.getOperation(`apis/${apiName}/operations/${operationName}`);
 
         if (operation) {
+            if (this.api().type === "soap") {
+
+            }
+
             await this.loadDefinitions(operation);
             this.operation(operation);
         }
@@ -148,7 +152,7 @@ export class OperationDetails {
                     schemaIds.push(schemaId);
                 }
             });
-        
+
         const typeNames = prepresentations.filter(p => !!p.typeName).map(p => p.typeName).filter((item, pos, self) => self.indexOf(item) === pos);
 
         const schemasPromises = schemaIds.map(schemaId => this.apiService.getApiSchema(`${apiId}/${schemaId}`));
@@ -156,14 +160,14 @@ export class OperationDetails {
         const definitions = schemas.map(x => x.definitions).flat();
 
         let lookupResult = [...typeNames];
-        while (lookupResult.length > 0) {            
+        while (lookupResult.length > 0) {
             const references = definitions.filter(d => lookupResult.indexOf(d.name) !== -1);
 
             lookupResult = references.length === 0 ? [] : this.lookupReferences(references, typeNames);
             if (lookupResult.length > 0) {
                 typeNames.push(...lookupResult);
             }
-        } 
+        }
 
         this.definitions(definitions.filter(d => typeNames.indexOf(d.name) !== -1));
     }
@@ -174,12 +178,7 @@ export class OperationDetails {
     }
 
     public async loadGatewayInfo(): Promise<void> {
-        let hostnames = await this.tenantService.getProxyHostnames();
-
-        if (hostnames.length === 0) {
-            // TODO: Remove once setting backend serving the setting gets deployed.
-            hostnames = await this.getProxyHostnames();
-        }
+        const hostnames = await this.tenantService.getProxyHostnames();
 
         if (hostnames.length === 0) {
             throw new Error(`Unable to fetch gateway hostnames.`);
@@ -240,17 +239,6 @@ export class OperationDetails {
         const operationName = this.operation().name;
 
         return this.routeHelper.getDefinitionAnchor(apiName, operationName, definition.name);
-    }
-
-    private async getProxyHostnames(): Promise<string[]> {
-        const apiName = this.routeHelper.getApiName();
-
-        if (!apiName) {
-            return [];
-        }
-
-        const apiDefinition: SwaggerObject = await this.apiService.exportApi(`apis/${apiName}`, "swagger");
-        return [apiDefinition.host];
     }
 
     @OnDestroyed()
