@@ -32,7 +32,7 @@ import { ValidationSummaryModule } from "./components/users/validation-summary/k
 import { BackendService } from "./services/backendService";
 import { StaticRoleService } from "./services/roleService";
 import { ProvisionService } from "./services/provisioningService";
-import { ClickCounterPublishModule } from "../examples/widget/click-counter/ko";
+import { ClickCounterPublishModule } from "../examples/widget/click-counter";
 
 export class ApimPublishModule implements IInjectorModule {
     public register(injector: IInjector): void {
