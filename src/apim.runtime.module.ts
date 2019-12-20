@@ -61,10 +61,12 @@ import { VisibilityGuard } from "@paperbits/common/user";
 import { StaticUserService } from "./services";
 import { SignOutRouteGuard } from "./routing/signOutRouteGuard";
 import { ProvisionService } from "./services/provisioningService";
+import { ClickCounterRuntimeModule } from "../examples/widget/click-counter/clickCounter.runtime.module";
 
 export class ApimRuntimeModule implements IInjectorModule {
     public register(injector: IInjector): void {
         injector.bindModule(new KnockoutRegistrationLoaders());
+        injector.bindModule(new ClickCounterRuntimeModule());
         injector.bindSingleton("eventManager", DefaultEventManager);
         injector.bindSingleton("logger", ConsoleLogger);
         injector.bindCollection("autostart");
