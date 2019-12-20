@@ -57,7 +57,7 @@ import { ValidationSummaryEditorModule} from "./components/users/validation-summ
 import { BackendService } from "./services/backendService";
 import { StaticRoleService } from "./services/roleService";
 import { ProvisionService } from "./services/provisioningService";
-import { ClickCounterDesignModule } from "../examples/widget/click-counter/ko";
+import { ClickCounterDesignModule } from "../examples/widget/click-counter";
 
 
 export class ApimDesignModule implements IInjectorModule {
