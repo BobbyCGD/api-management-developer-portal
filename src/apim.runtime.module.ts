@@ -61,7 +61,7 @@ import { VisibilityGuard } from "@paperbits/common/user";
 import { StaticUserService } from "./services";
 import { SignOutRouteGuard } from "./routing/signOutRouteGuard";
 import { ProvisionService } from "./services/provisioningService";
-import { ClickCounterRuntimeModule } from "../examples/widget/click-counter/clickCounter.runtime.module";
+import { ClickCounterRuntimeModule } from "../examples/widget/click-counter";
 
 export class ApimRuntimeModule implements IInjectorModule {
     public register(injector: IInjector): void {
