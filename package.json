@@ -59,12 +59,12 @@
         "webpack-merge": "^4.2.2"
     },
     "dependencies": {
-        "@paperbits/azure": "0.1.188",
-        "@paperbits/common": "0.1.188",
-        "@paperbits/core": "0.1.188",
-        "@paperbits/prosemirror": "0.1.188",
-        "@paperbits/styles": "0.1.188",
-        "@webcomponents/webcomponentsjs": "^2.4.0",
+        "@paperbits/azure": "0.1.202",
+        "@paperbits/common": "0.1.202",
+        "@paperbits/core": "0.1.202",
+        "@paperbits/prosemirror": "0.1.202",
+        "@paperbits/styles": "0.1.202",
+        "@webcomponents/custom-elements": "^1.3.1",
         "adal-vanilla": "^1.0.18",
         "applicationinsights-js": "^1.0.20",
         "core-js": "^3.4.1",
