@@ -25,12 +25,7 @@ export class ConferenceSessionEditor implements WidgetEditor<ConferenceSessionMo
 
     @OnMounted()
     public async initialize(): Promise<void> {
-        /*
-           This method is called after component created. At this moment all the parameters,
-           includinig "model", are available.
-        */
-
-        this.sessionId(this.model.sessionId?.toString());
+        this.sessionId(this.model.sessionId);
         this.sessionId.subscribe(this.applyChanges);
     }
 

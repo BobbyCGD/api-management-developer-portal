@@ -1,5 +1,5 @@
 import { Contract } from "@paperbits/common";
 
 export interface ConferenceSessionContract extends Contract {
-    initialCount: string;
+    sessionId: string;
 }

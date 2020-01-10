@@ -1,7 +1,7 @@
+import { Bag } from "@paperbits/common";
 import { EventManager } from "@paperbits/common/events";
 import { IWidgetBinding } from "@paperbits/common/editing";
 import { ViewModelBinder } from "@paperbits/common/widgets";
-import { Bag } from "@paperbits/common";
 import { ConferenceSessionViewModel } from "./conferenceSessionViewModel";
 import { widgetName, widgetDisplayName, widgetEditorSelector } from "../constants";
 import { ConferenceSessionModel } from "../conferenceSessionModel";
