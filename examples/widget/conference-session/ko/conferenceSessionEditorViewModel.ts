@@ -11,10 +11,10 @@ import { widgetEditorSelector } from "..";
     template: template
 })
 export class ConferenceSessionEditor implements WidgetEditor<ConferenceSessionModel> {
-    public readonly initialCount: ko.Observable<string>;
+    public readonly sessionId: ko.Observable<string>;
 
     constructor() {
-        this.initialCount = ko.observable("0");
+        this.sessionId = ko.observable();
     }
 
     @Param()
@@ -30,12 +30,12 @@ export class ConferenceSessionEditor implements WidgetEditor<ConferenceSessionMo
            includinig "model", are available.
         */
 
-        this.initialCount(this.model.initialCount?.toString());
-        this.initialCount.subscribe(this.applyChanges);
+        this.sessionId(this.model.sessionId?.toString());
+        this.sessionId.subscribe(this.applyChanges);
     }
 
     private applyChanges(): void {
-        this.model.initialCount = parseInt(this.initialCount());
+        this.model.sessionId = this.sessionId();
         this.onChange(this.model);
     }
 }

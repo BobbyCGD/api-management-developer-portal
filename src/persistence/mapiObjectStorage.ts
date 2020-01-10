@@ -1,5 +1,6 @@
 import * as _ from "lodash";
 import * as Objects from "@paperbits/common";
+import { ViewManager } from "@paperbits/common/ui";
 import { IObjectStorage, Query, Operator } from "@paperbits/common/persistence";
 import { MapiClient } from "../services/mapiClient";
 import { Page } from "../models/page";
@@ -12,7 +13,10 @@ const selectedLocale = "en_us";
 
 
 export class MapiObjectStorage implements IObjectStorage {
-    constructor(private readonly mapiClient: MapiClient) { }
+    constructor(
+        private readonly mapiClient: MapiClient,
+        private readonly viewManager: ViewManager
+    ) { }
 
     private getContentTypeFromResource(resource: string): string {
         const regex = /contentTypes\/([\w]*)/gm;
@@ -211,7 +215,7 @@ export class MapiObjectStorage implements IObjectStorage {
             if (error && error.code === "ResourceNotFound") {
                 return null;
             }
-            
+
             throw new Error(`Could not get object '${key}'. Error: ${error.message}`);
         }
     }
@@ -393,11 +397,11 @@ export class MapiObjectStorage implements IObjectStorage {
         }
 
         let contract: any;
-        
+
         if (isLocalized) {
             contract = contractObject.properties[selectedLocale];
             contract.id = contractObject.id;
-        } 
+        }
         else {
             if (isArm) {
                 contract = contractObject.properties;
@@ -473,5 +477,7 @@ export class MapiObjectStorage implements IObjectStorage {
         });
 
         await Promise.all(saveTasks);
+
+        this.viewManager.notifySuccess("Changes saved", "All changes were pushed to server");
     }
 }

@@ -11,7 +11,7 @@ export class ConferenceSessionViewModelBinder implements ViewModelBinder<Confere
     constructor(private readonly eventManager: EventManager) { }
 
     public async updateViewModel(model: ConferenceSessionModel, viewModel: ConferenceSessionViewModel): Promise<void> {
-        viewModel.runtimeConfig(JSON.stringify({ initialCount: model.initialCount }));
+        viewModel.runtimeConfig(JSON.stringify({ sessionId: model.sessionId }));
     }
 
     public async modelToViewModel(model: ConferenceSessionModel, viewModel?: ConferenceSessionViewModel, bindingContext?: Bag<any>): Promise<ConferenceSessionViewModel> {

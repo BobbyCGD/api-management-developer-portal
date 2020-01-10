@@ -1,3 +1,3 @@
 export class ConferenceSessionModel { 
-    public initialCount: number;
+    public sessionId: string;
 }

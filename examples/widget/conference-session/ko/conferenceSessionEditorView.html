@@ -3,10 +3,10 @@
 
     <div class="form-group">
         <label class="form-label">
-            Initial count
+            Session #
             <button class="btn btn-info" type="button" title="Help"
-                data-bind="tooltipToggle: 'Initial value that needs to be set to click counter.'"></button>
+                data-bind="tooltipToggle: 'Number of the session'"></button>
         </label>
-        <input type="number" class="form-control" data-bind="value: initialCount" min="0" />
+        <input type="string" class="form-control" data-bind="textInput: sessionId" />
     </div>
 </fieldset>

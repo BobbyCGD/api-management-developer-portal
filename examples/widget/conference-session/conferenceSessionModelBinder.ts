@@ -16,14 +16,14 @@ export class ConferenceSessionModelBinder implements IModelBinder<ConferenceSess
 
     public async contractToModel(contract: ConferenceSessionContract): Promise<ConferenceSessionModel> {
         const model = new ConferenceSessionModel();
-        model.initialCount = contract.initialCount;
+        model.sessionId = contract.initialCount;
         return model;
     }
 
     public modelToContract(model: ConferenceSessionModel): Contract {
         const contract: ConferenceSessionContract = {
             type: widgetName,
-            initialCount: model.initialCount
+            initialCount: model.sessionId
         };
 
         return contract;

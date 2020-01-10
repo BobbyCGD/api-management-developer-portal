@@ -1,11 +1,13 @@
 import { MapiClient } from "./../../src/services/mapiClient";
 import { MapiObjectStorage } from "../../src/persistence/mapiObjectStorage";
 import { assert, expect } from "chai";
+import { DefaultViewManager } from "@paperbits/core/ko/ui";
 
 describe("MAPI Object Storage", async () => {
     it("Correctly translates resources", async () => {
         const mapiClient = new MapiClient(null, null, null, null);
-        const mapiObjectStorage = new MapiObjectStorage(mapiClient);
+        const viewManager = new DefaultViewManager(null, null, null, null);
+        const mapiObjectStorage = new MapiObjectStorage(mapiClient, viewManager);
 
         const pageResource = mapiObjectStorage.paperbitsKeyToArmResource("pages/somepage");
         expect(pageResource).equals("contentTypes/page/contentItems/somepage");
