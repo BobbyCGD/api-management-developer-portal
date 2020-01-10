@@ -1,4 +1,4 @@
-import { widgetName } from "./contants";
+import { widgetName } from "./constants";
 import { IModelBinder } from "@paperbits/common/editing";
 import { WidgetModel } from "./widgetModel";
 import { Contract } from "@paperbits/common";
@@ -20,7 +20,6 @@ export class WidgetModelBinder implements IModelBinder<WidgetModel> {
     public async contractToModel(contract: WidgetContract): Promise<WidgetModel> {
         const model = new WidgetModel();
         // model.property = contract.property;
-        
         return model;
     }
 

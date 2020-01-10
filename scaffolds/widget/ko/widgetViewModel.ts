@@ -1,6 +1,6 @@
 import * as ko from "knockout";
 import template from "./widget.html";
-import { widgetSelector } from "./../contants";
+import { widgetSelector } from "../constants";
 import { Component } from "@paperbits/common/ko/decorators";
 
 @Component({

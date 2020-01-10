@@ -10,7 +10,6 @@ import "./bindingHandlers/acceptChange";
 import "@paperbits/core/ko/bindingHandlers/bindingHandlers.component";
 import "@paperbits/core/ko/bindingHandlers/bindingHandlers.focus";
 import "@paperbits/core/ko/bindingHandlers/bindingHandlers.activate";
-import { RouteHelper } from "./routing/routeHelper";
 import { IInjector, IInjectorModule } from "@paperbits/common/injection";
 import { DefaultEventManager } from "@paperbits/common/events";
 import { XmlHttpRequestClient } from "@paperbits/common/http";
@@ -19,6 +18,7 @@ import { DefaultRouter } from "@paperbits/common/routing";
 import { ConsoleLogger } from "@paperbits/common/logging";
 import { KnockoutRegistrationLoaders } from "@paperbits/core/ko/knockout.loaders";
 import { ApiList, ApiListDropdown, ApiListTiles } from "./components/apis/list-of-apis/ko/runtime";
+import { RouteHelper } from "./routing/routeHelper";
 import { ApiService } from "./services/apiService";
 import { TagService } from "./services/tagService";
 import { TenantService } from "./services/tenantService";
@@ -61,12 +61,13 @@ import { VisibilityGuard } from "@paperbits/common/user";
 import { StaticUserService } from "./services";
 import { SignOutRouteGuard } from "./routing/signOutRouteGuard";
 import { ProvisionService } from "./services/provisioningService";
-import { ClickCounterRuntimeModule } from "../examples/widget/conference-session";
+import { ConferenceSessionRuntimeModule } from "../examples/widget/conference-session/conferenceSession.runtime.module";
+
 
 export class ApimRuntimeModule implements IInjectorModule {
     public register(injector: IInjector): void {
         injector.bindModule(new KnockoutRegistrationLoaders());
-        injector.bindModule(new ClickCounterRuntimeModule());
+        injector.bindModule(new ConferenceSessionRuntimeModule());
         injector.bindSingleton("eventManager", DefaultEventManager);
         injector.bindSingleton("logger", ConsoleLogger);
         injector.bindCollection("autostart");

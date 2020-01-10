@@ -1,12 +1,14 @@
 import * as ko from "knockout";
-import template from "./clickCounter.html";
+import template from "./conferenceSession.html";
 import { Component } from "@paperbits/common/ko/decorators";
+import { widgetSelector } from "../constants";
+
 
 @Component({
-    selector: "click-counter",
+    selector: widgetSelector,
     template: template
 })
-export class ClickCounterViewModel {
+export class ConferenceSessionViewModel {
     public readonly runtimeConfig: ko.Observable<string>;
 
     constructor() {

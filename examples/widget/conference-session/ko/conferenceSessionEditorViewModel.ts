@@ -1,14 +1,16 @@
 import * as ko from "knockout";
-import template from "./clickCounterEditor.html";
-import { ClickCounterModel } from "../clickCounterModel";
+import template from "./conferenceSessionEditorView.html";
 import { Component, OnMounted, Param, Event } from "@paperbits/common/ko/decorators";
 import { WidgetEditor } from "@paperbits/common/widgets";
+import { ConferenceSessionModel } from "../conferenceSessionModel";
+import { widgetEditorSelector } from "..";
+
 
 @Component({
-    selector: "click-counter-editor",
+    selector: widgetEditorSelector,
     template: template
 })
-export class ClickCounterEditor implements WidgetEditor<ClickCounterModel> {
+export class ConferenceSessionEditor implements WidgetEditor<ConferenceSessionModel> {
     public readonly initialCount: ko.Observable<string>;
 
     constructor() {
@@ -16,10 +18,10 @@ export class ClickCounterEditor implements WidgetEditor<ClickCounterModel> {
     }
 
     @Param()
-    public model: ClickCounterModel;
+    public model: ConferenceSessionModel;
 
     @Event()
-    public onChange: (model: ClickCounterModel) => void;
+    public onChange: (model: ConferenceSessionModel) => void;
 
     @OnMounted()
     public async initialize(): Promise<void> {

@@ -1,5 +1,5 @@
 import { Contract } from "@paperbits/common";
 
-export interface ClickCounterContract extends Contract {
+export interface ConferenceSessionContract extends Contract {
     initialCount: number;
 }

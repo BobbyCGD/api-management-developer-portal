@@ -32,7 +32,7 @@ import { ValidationSummaryModule } from "./components/users/validation-summary/k
 import { BackendService } from "./services/backendService";
 import { StaticRoleService } from "./services/roleService";
 import { ProvisionService } from "./services/provisioningService";
-import { ClickCounterPublishModule } from "../examples/widget/conference-session";
+import { ConferenceSessionPublishModule } from "../examples/widget/conference-session/conferenceSession.publish.module";
 
 export class ApimPublishModule implements IInjectorModule {
     public register(injector: IInjector): void {
@@ -57,7 +57,7 @@ export class ApimPublishModule implements IInjectorModule {
         injector.bindModule(new ChangePasswordModule());
         injector.bindModule(new ReportsModule());
         injector.bindModule(new ValidationSummaryModule());
-        injector.bindModule(new ClickCounterPublishModule());
+        injector.bindModule(new ConferenceSessionPublishModule());
         injector.bindSingleton("blobStorage", AzureBlobStorage);
         injector.bindSingleton("tenantService", TenantService);        
         injector.bindSingleton("backendService", BackendService);

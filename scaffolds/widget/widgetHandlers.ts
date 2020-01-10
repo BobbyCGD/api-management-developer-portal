@@ -1,4 +1,4 @@
-﻿import { widgetName, widgetDisplayName, widgetCategory } from "./contants";
+﻿import { widgetName, widgetDisplayName, widgetCategory } from "./constants";
 import { IWidgetOrder, IWidgetHandler } from "@paperbits/common/editing";
 import { WidgetModel } from "./widgetModel";
 

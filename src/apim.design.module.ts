@@ -57,7 +57,7 @@ import { ValidationSummaryEditorModule} from "./components/users/validation-summ
 import { BackendService } from "./services/backendService";
 import { StaticRoleService } from "./services/roleService";
 import { ProvisionService } from "./services/provisioningService";
-import { ClickCounterDesignModule } from "../examples/widget/conference-session";
+import { ConferenceSessionDesignModule } from "../examples/widget/conference-session/conferenceSession.design.module";
 
 
 export class ApimDesignModule implements IInjectorModule {
@@ -107,7 +107,7 @@ export class ApimDesignModule implements IInjectorModule {
         injector.bindModule(new HelpModule());
         injector.bindModule(new ValidationSummaryEditorModule());
         injector.bindModule(new ValidationSummaryModule());
-        injector.bindModule(new ClickCounterDesignModule());
+        injector.bindModule(new ConferenceSessionDesignModule());
         injector.bindSingleton("app", App);
         injector.bindSingleton("logger", ConsoleLogger);
         injector.bindSingleton("blobStorage", AzureBlobStorage);
