@@ -1,11 +1,12 @@
 import * as ko from "knockout";
-import template from "./widgetEditor.html";
-import { WidgetModel } from "../widgetModel";
-import { Component, OnMounted, Param, Event, OnDestroyed } from "@paperbits/common/ko/decorators";
+import template from "./widgetEditorView.html";
 import { WidgetEditor } from "@paperbits/common/widgets";
+import { Component, OnMounted, Param, Event, OnDestroyed } from "@paperbits/common/ko/decorators";
+import { WidgetModel } from "../widgetModel";
+import { widgetEditorSelector } from "..";
 
 @Component({
-    selector: "widget-editor",
+    selector: widgetEditorSelector,
     template: template
 })
 export class WidgetEditorViewModel implements WidgetEditor<WidgetModel> {

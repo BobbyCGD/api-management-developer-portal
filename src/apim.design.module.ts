@@ -58,6 +58,7 @@ import { BackendService } from "./services/backendService";
 import { StaticRoleService } from "./services/roleService";
 import { ProvisionService } from "./services/provisioningService";
 import { ConferenceSessionDesignModule } from "../examples/widget/conference-session/conferenceSession.design.module";
+import { WidgetDesignModule } from "../scaffolds/widget/widget.design.module";
 
 
 export class ApimDesignModule implements IInjectorModule {
@@ -108,6 +109,7 @@ export class ApimDesignModule implements IInjectorModule {
         injector.bindModule(new ValidationSummaryEditorModule());
         injector.bindModule(new ValidationSummaryModule());
         injector.bindModule(new ConferenceSessionDesignModule());
+        injector.bindModule(new WidgetDesignModule());
         injector.bindSingleton("app", App);
         injector.bindSingleton("logger", ConsoleLogger);
         injector.bindSingleton("blobStorage", AzureBlobStorage);

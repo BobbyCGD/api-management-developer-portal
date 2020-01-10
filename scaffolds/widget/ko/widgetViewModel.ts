@@ -1,5 +1,5 @@
 import * as ko from "knockout";
-import template from "./widget.html";
+import template from "./widgetView.html";
 import { widgetSelector } from "../constants";
 import { Component } from "@paperbits/common/ko/decorators";
 

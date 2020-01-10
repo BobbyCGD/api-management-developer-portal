@@ -33,6 +33,7 @@ import { BackendService } from "./services/backendService";
 import { StaticRoleService } from "./services/roleService";
 import { ProvisionService } from "./services/provisioningService";
 import { ConferenceSessionPublishModule } from "../examples/widget/conference-session/conferenceSession.publish.module";
+import { WidgetPublishModule } from "../scaffolds/widget/widget.publish.module";
 
 export class ApimPublishModule implements IInjectorModule {
     public register(injector: IInjector): void {
@@ -58,6 +59,7 @@ export class ApimPublishModule implements IInjectorModule {
         injector.bindModule(new ReportsModule());
         injector.bindModule(new ValidationSummaryModule());
         injector.bindModule(new ConferenceSessionPublishModule());
+        injector.bindModule(new WidgetPublishModule());
         injector.bindSingleton("blobStorage", AzureBlobStorage);
         injector.bindSingleton("tenantService", TenantService);        
         injector.bindSingleton("backendService", BackendService);
