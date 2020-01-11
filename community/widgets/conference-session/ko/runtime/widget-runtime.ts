@@ -1,9 +1,9 @@
+import template from "./widget-runtime.html";
+import { Component, RuntimeComponent, OnMounted, OnDestroyed, Param } from "@paperbits/common/ko/decorators";
 import * as ko from "knockout";
-import template from "./conference-session-runtime.html";
+import { widgetRuntimeSelector } from "../../constants";
 import { HttpClient, HttpRequest } from "@paperbits/common/http";
-import { Component, RuntimeComponent, Param, OnMounted, OnDestroyed } from "@paperbits/common/ko/decorators";
-import { widgetRuntimeSelector } from "../..";
-const conferenceApiUrl = "https://conferenceapi.azurewebsites.net/session";
+
 
 @RuntimeComponent({
     selector: widgetRuntimeSelector
@@ -12,7 +12,7 @@ const conferenceApiUrl = "https://conferenceapi.azurewebsites.net/session";
     selector: widgetRuntimeSelector,
     template: template
 })
-export class ConferenceSessionRuntime {
+export class WidgetRuntime {
     public readonly sessionDescription: ko.Observable<string>;
 
     constructor(private readonly httpClient: HttpClient) {
@@ -28,7 +28,7 @@ export class ConferenceSessionRuntime {
         const sessionId = this.sessionId();
 
         const request: HttpRequest = {
-            url: `${conferenceApiUrl}/${sessionId}`,
+            url: `https://conferenceapi.azurewebsites.net/session/${sessionId}`,
             method: "GET"
         };
 

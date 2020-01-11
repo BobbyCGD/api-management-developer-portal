@@ -61,14 +61,13 @@ import { VisibilityGuard } from "@paperbits/common/user";
 import { StaticUserService } from "./services";
 import { SignOutRouteGuard } from "./routing/signOutRouteGuard";
 import { ProvisionService } from "./services/provisioningService";
-import { ConferenceSessionRuntimeModule } from "../examples/widget/conference-session/conferenceSession.runtime.module";
-import { WidgetRuntimeModule } from "../scaffolds/widget/widget.runtime.module";
+import { ConferenceSessionRuntimeModule } from "../community/widgets/conference-session/widget.runtime.module";
+//import { ConferenceSessionRuntimeModule } from "../examples/widget/conference-session/conferenceSession.runtime.module";
 
 export class ApimRuntimeModule implements IInjectorModule {
     public register(injector: IInjector): void {
         injector.bindModule(new KnockoutRegistrationLoaders());
         injector.bindModule(new ConferenceSessionRuntimeModule());
-        injector.bindModule(new WidgetRuntimeModule());
         injector.bindSingleton("eventManager", DefaultEventManager);
         injector.bindSingleton("logger", ConsoleLogger);
         injector.bindCollection("autostart");

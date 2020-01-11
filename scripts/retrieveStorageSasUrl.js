@@ -4,7 +4,7 @@
 
 const azure = require('azure-storage');
 
-let connectionString = "DefaultEndpointsProtocol=https;AccountName=...";
+let connectionString = "DefaultEndpointsProtocol=https;AccountName=apimstmyrvamtc3dsy8hsqtn;AccountKey=gHgjzwYY+77xTyFfvQWN3J6ckygJeBHs6UBxH0OK2Ht5fGf9Ci4MbAHZyMEi0q2OHS240hhe06wtJhpNZBw47Q==;EndpointSuffix=core.windows.net";
 
 function generateSasToken(container, connectionString) {
   const blobName = "";
